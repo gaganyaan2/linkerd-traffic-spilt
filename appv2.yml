@@ -1,0 +1,37 @@
+---
+#appv2=httpd
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appv2
+spec:
+  selector:
+    matchLabels:
+      run: appv2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: appv2
+    spec:
+      containers:
+      - name: appv2
+        image: httpd
+        ports:
+        - containerPort: 80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: appv2
+  labels:
+    run: appv2
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    run: appv2
+  type: NodePort
