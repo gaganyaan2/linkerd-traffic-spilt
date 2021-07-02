@@ -32,3 +32,9 @@ appv1      1/1   100.00%   4.0rps           1ms           1ms           2ms     
 appv2      1/1   100.00%   0.8rps           1ms           2ms           2ms          4
 
 ```
+
+## Reference :
+
+1. https://github.com/servicemeshinterface/smi-spec/blob/main/apis/traffic-split/v1alpha2/traffic-split.md
+2. https://linkerd.io/2.10/features/traffic-split/
+3. https://linkerd.io/2019/07/11/announcing-linkerd-2.4/
