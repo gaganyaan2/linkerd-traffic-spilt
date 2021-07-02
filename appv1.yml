@@ -1,0 +1,35 @@
+---
+#appv1=nginx
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appv1
+spec:
+  selector:
+    matchLabels:
+      run: appv1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: appv1
+    spec:
+      containers:
+      - name: appv1
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: appv1
+  labels:
+    run: appv1
+spec:
+  ports:
+    - port: 80
+      name: appv1
+  selector:
+    run: appv1
+  type: NodePort
