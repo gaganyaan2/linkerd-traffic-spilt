@@ -33,6 +33,12 @@ appv2      1/1   100.00%   0.8rps           1ms           2ms           2ms     
 
 ```
 
+## Note:
+
+1. Test pod should be injected with linkerd-proxy sidecar
+2. Linkerd viz should be installed
+3. To expose this service outside of cluster we need to inject the linkerd-proxy sidecar into ingress controller
+
 ## Reference :
 
 1. https://github.com/servicemeshinterface/smi-spec/blob/main/apis/traffic-split/v1alpha2/traffic-split.md
