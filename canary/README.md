@@ -14,14 +14,14 @@ kubectl apply -k github.com/fluxcd/flagger/kustomize/linkerd
 
 #deploy
 kubectl apply -f appv1.yml -n linkerd-test
-kubectl apply -f flagger.yml -n linkerd-test
+kubectl apply -f canary-flagger.yml -n linkerd-test
 
 ```
 
 ## How to see the canary status?
 ```
-#update the image name to see the status
-kubectl -n linkerd-test set image deployment/appv1 appv1=httpd
+#update the image name to see the new rollout status
+kubectl -n linkerd-test set image deployment/appv1 appv1=httpd  #or nginx
 
 #status
 kubectl -n linkerd-test get ev --watch
