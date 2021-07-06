@@ -1,0 +1,10 @@
+Kind: MetricTemplate
+metadata:
+  name: raspberry-temp
+  namespace: linkerd-test
+spec:
+  provider:
+    type: prometheus
+    address: http://prometheus.linkerd-test:9090
+  query: |
+    sum(sum_over_time(raspberry_temp[1m]))/sum(count_over_time(raspberry_temp[1m]))

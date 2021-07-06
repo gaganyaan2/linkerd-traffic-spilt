@@ -1,0 +1,24 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: appv1
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: appv1
+  service:
+    port: 80
+  analysis:
+    interval: 30s
+    threshold: 5
+    stepWeight: 5
+    maxWeight: 100
+    metrics:
+    - name: raspberry-temp
+      templateRef:
+        name: raspberry-temp
+        namespace: linkerd-test
+      thresholdRange:
+        max: 70
+      interval: 1m
